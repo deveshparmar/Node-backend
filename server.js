@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 
 const Laboratory = require("./models/Laboratory");
 const Patient = require("./models/Patient");
-const { generateToken } = require("./controller/session");
+const { generateToken } = require("./session");
 const { default: axios } = require("axios");
 
 const app = express();
