@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'lmis-backend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B4589CF234284F08ABA0A9A837EF64B7 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2E60E2DDC17B4FA88F38F4831A6A7DCA }}
           package: .
