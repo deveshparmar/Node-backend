@@ -211,7 +211,11 @@ let X_Token = "";
 async function generate_token(){
   authToken = await generateToken()
   console.log("Auth-Token=="+authToken)
+<<<<<<< HEAD
   // setTimeout(generate_token, 8*60*1000);
+=======
+  // setTimeout(generate_token, 9*60*1000);
+>>>>>>> 964c4bb7fe4e49a11bdd88da3892301280b0de6c
 }
 
 generate_token();
@@ -230,7 +234,12 @@ app.post("/generate-aadhaar-otp", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
+<<<<<<< HEAD
     const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateOtp", body, {headers: headers,timeout: 60000,})
+=======
+    console.log(authToken);
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateOtp", body, {headers: headers})
+>>>>>>> 964c4bb7fe4e49a11bdd88da3892301280b0de6c
     tranID = response.data.txnId;
     res.status(200).send(response.data.txnId);
     
