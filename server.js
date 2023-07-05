@@ -211,7 +211,7 @@ let X_Token = "";
 async function generate_token(){
   authToken = await generateToken()
   console.log("Auth-Token=="+authToken)
-  setTimeout(generate_token, 9*60*1000);
+  // setTimeout(generate_token, 8*60*1000);
 }
 
 generate_token();
@@ -230,7 +230,7 @@ app.post("/generate-aadhaar-otp", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateOtp", body, {headers: headers})
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateOtp", body, {headers: headers,timeout: 60000,})
     tranID = response.data.txnId;
     res.status(200).send(response.data.txnId);
     
@@ -257,7 +257,7 @@ app.post("/verify-aadhaar-otp", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/verifyOTP",body,{headers: headers}) 
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/verifyOTP",body,{headers: headers,timeout: 60000,}) 
     tranID = response.data.txnId;
     res.status(200).send(response.data.txnId);
     
@@ -284,7 +284,7 @@ app.post("/generate-mobile-otp", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateMobileOTP", body, {headers: headers})
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateMobileOTP", body, {headers: headers,timeout: 60000,})
     tranID = response.data.txnId;
     res.status(200).send(response.data.txnId);
   }catch (error) {
@@ -310,7 +310,7 @@ app.post("/verify-mobile-otp", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/verifyMobileOTP",body,{headers: headers})
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/verifyMobileOTP",body,{headers: headers,timeout: 60000,})
     tranID = response.data.txnId;
     res.status(200).send(response.data.txnId);
   }catch (error) {
@@ -342,7 +342,7 @@ app.post("/create-abha", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : 'application/json'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/createHealthIdWithPreVerified", body, {headers: headers});
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/createHealthIdWithPreVerified", body, {headers: headers,timeout: 60000,});
     const ResponseData = response.data;
     console.log(ResponseData);
     res.status(200).send(ResponseData);
@@ -368,7 +368,7 @@ app.post("/auth-with-healthid",async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/auth/authWithMobile", body, {headers: headers})
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/auth/authWithMobile", body, {headers: headers,timeout: 60000,})
     tranID = response.data.txnId;
     console.log(response);
     res.status(200).send(response.data.txnId);
@@ -396,7 +396,7 @@ app.post("/login-mobile-otp",async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/auth/confirmWithMobileOTP", body, {headers: headers})
+    const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/auth/confirmWithMobileOTP", body, {headers: headers,timeout: 60000,})
     // tranID = response.data.txnId;
     X_Token = response.data.token;
     console.log("\n \n X-Token Print : " + X_Token);
@@ -421,7 +421,7 @@ app.get("/get-abha-card",async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.get("https://healthidsbx.abdm.gov.in/api/v1/account/getSvgCard",{headers: headers})
+    const response = await axios.get("https://healthidsbx.abdm.gov.in/api/v1/account/getSvgCard",{headers: headers,timeout: 60000,})
     console.log(response);
 
     const image_data = response.data;
@@ -445,7 +445,7 @@ app.get("/get-abha-pdf",async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.get("https://healthidsbx.abdm.gov.in/api/v1/account/getCard",{headers: headers})
+    const response = await axios.get("https://healthidsbx.abdm.gov.in/api/v1/account/getCard",{headers: headers,timeout: 60000,})
     console.log(response);
 
     const pdf_data = response.data;
@@ -469,7 +469,7 @@ app.get("/logout",async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
-    const response = await axios.get("https://healthidsbx.abdm.gov.in/api/v1/account/logout",{headers: headers})
+    const response = await axios.get("https://healthidsbx.abdm.gov.in/api/v1/account/logout",{headers: headers,timeout: 60000,})
     console.log(response);
     res.sendStatus(response.status)
   }catch (error) {
