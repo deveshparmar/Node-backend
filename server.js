@@ -211,7 +211,7 @@ let X_Token = "";
 async function generate_token(){
   authToken = await generateToken()
   console.log("Auth-Token=="+authToken)
-  setTimeout(generate_token, 9*60*1000);
+  // setTimeout(generate_token, 9*60*1000);
 }
 
 generate_token();
