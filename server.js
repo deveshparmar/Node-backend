@@ -230,6 +230,7 @@ app.post("/generate-aadhaar-otp", async (req, res) => {
       'Accept-Language' : 'en-US',
       'Accept' : '*/*'
     }
+    console.log(authToken);
     const response = await axios.post("https://healthidsbx.abdm.gov.in/api/v1/registration/aadhaar/generateOtp", body, {headers: headers})
     tranID = response.data.txnId;
     res.status(200).send(response.data.txnId);
